@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Auth</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .box {
+            display: inline-block;
+            padding: 20px;
+            margin: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Flask User System</h1>
+
+<!-- 🔥 FLASH MESSAGES -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <p style="color:
+                {% if category == 'error' %} red
+                {% else %} green
+                {% endif %}
+            ">
+                {{ message }}
+            </p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<div class="container">
+
+    <!-- REGISTER -->
+    <div class="box">
+        <h2>Register</h2>
+
+        <form action="/register" method="post">
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="box">
+        <h2>Login</h2>
+
+        <form action="/login" method="post">
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
